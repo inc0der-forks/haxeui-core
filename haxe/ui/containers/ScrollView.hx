@@ -1102,6 +1102,9 @@ class ScrollViewEvents extends haxe.ui.events.Events {
     private var _fadeTimer:Timer = null;
     @:access(haxe.ui.core.Component)
     private function onMouseWheel(event:MouseEvent) {
+        if (this._scrollview.scrollPolicy == ScrollPolicy.NEVER) {
+            return;
+        }
         // we'll default to vertical scrolling for the mouse wheel, however,
         // if there is no vertical scrollbar we'll try to use horizontal
         // scrolling instead - note that if the shiftkey is pressed
